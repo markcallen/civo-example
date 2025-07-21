@@ -23,6 +23,7 @@ data "civo_firewall" "demo" {
 resource "civo_kubernetes_cluster" "demo" {
   firewall_id      = data.civo_firewall.demo.id
   write_kubeconfig = true
+  applications     = "metrics-server"
   pools {
     size       = "g4s.kube.small"
     node_count = 3
